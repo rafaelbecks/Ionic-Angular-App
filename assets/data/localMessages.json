@@ -1,0 +1,39 @@
+{
+    "waitForWeddingDateMsg": {
+        "title": "¡Ya queda poco! &#x23F3",
+        "subTitle": "\nEn solo ${tiempo} minutos podras usar la aplicación! ",
+        "button": "Vale, espero..."
+    },
+    "appCloseMsg": {
+        "title": "Gracias por habernos acompañado &#x1F609",
+        "subTitle": "\nLas funcionalidades de la aplicación se han desactivado, pero tienes todas tus fotos &#x1F4F2 en la galería de tu dispositivo en el album Tecnoboda &#x1F31F",
+        "button": "Hasta luego"
+    },
+    "wedding": {
+        "finished":false,
+        "today": "Es hoy",
+        "thankyou":"Gracias por habernos acompañado",
+        "invitation":"¿Podrás acompañarnos este día?",
+        "ourWedding":"Nuestra Boda",
+        "hours":" horas y ",
+        "days":" días, "
+    },
+    "chroma": {
+        "camara" : {
+            "on":"Iniciando cámara &#x1F4F7",
+            "off":"Desactivando cámara &#x1F4F7",
+            "pleaseWait":"Espera un momento... &#x1F55B",
+            "filtersText":"Filtros",
+            "chromaText":"Chroma Key",
+            "backgroundSelect" : "Selecciona un fondo para aplicarlo"
+        },
+        "gallery":{
+            "noPhotos": {
+                "title": "Opps! &#x1F61F",
+                "subTitle": "\nTodavía nos has hecho fotos.\nVenga!! Pon tu mejor sonrisa &#x1F601 y a disfrutar con TecnoBoda!",
+                "button": "Vale"
+            }
+        }
+    },
+    "configUrl" : "http://technoimpact.net/config.json"
+}

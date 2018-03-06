@@ -1,0 +1,376 @@
+page-splash {
+
+}
+
+.header-splash {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.splashImage {
+    width: 100%;
+    position: absolute;
+    height: 80%;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.text-plash {
+    color: #fff;
+}
+
+.splashTitle{
+    // color: #413a38;}
+    text-align: center;
+    font-size: 11em;
+    margin: 16px;
+}
+
+.clock
+{
+    text-align: center;
+    font-size: 7em;
+    color: #ef8a6e;
+    font-weight: 700;
+}
+
+.clock span
+{
+    font-family: 'Montserrat', arial, sans-serif;
+    font-weight: 300;
+    margin-right: 50px;
+
+}
+
+.clock-titles
+{
+    color: #787d88;
+    text-align: center;
+    font-weight: normal;
+    margin-top: 8px;
+    font-size: 5em;
+}
+
+.clock-titles span
+{
+    margin-right: 48px;
+}
+
+.titles-splash {
+    position: absolute;
+    // top: -29em;
+    width: 100%;
+    z-index: 9;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-end;
+    align-content: flex-end;
+    display: flex;
+    bottom: 20%;
+}
+
+.debugMode {
+    opacity: 0.7;
+    z-index: 100000;
+    width: 98%;
+    height: 50px;
+    border: 1px dashed #990000;
+    background-color: #ffdddd;
+    color: red;
+    text-align: center;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    line-height: 50px;
+    white-space: nowrap;
+    font-weight: bold;
+    font: 20px;
+}
+
+.titles-splash2 {
+    position: absolute;
+    top: 5em;
+    width: 100%;
+    z-index: 9;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: inline-grid;
+}
+
+.main-text-splash
+{
+    font-weight: 700;
+    font-size: 13em;
+    text-align: center;
+    margin-bottom: 0px;
+    line-height: 0;
+}
+
+.subtitle-splash
+{
+    font-weight: 700;
+    text-align: center;
+    font-size: 6em;
+    padding-top: 15px;
+}
+
+.ribbon
+{
+    color: #413a38;
+    font-weight: 700;
+    -webkit-opacity: .85;
+    -moz-opacity: .85;
+    opacity: .85;
+    line-height: 185px;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover!important;
+    z-index: 1;
+    height: 30em;
+    margin-top: -8em;
+    margin-bottom: 43px;
+}
+
+.fecha
+{
+    text-align: center;
+    font-weight: bold;
+    bottom: 17vh;
+    font-size: 4.5em;
+    z-index: 2;
+}
+
+.footer-splash {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    height: 18%;
+}
+
+.clock-splash {
+    background: #fff;
+    padding-top: 1px;
+    // padding-bottom: 5px;
+}
+
+.alertCustomCss{
+    font-family: 'Satisfy' !important;
+    font-size: 20px !important;
+    button{
+        color: rgb(101, 32, 197);
+        font-family: 'Satisfy' !important;
+        text-transform: inherit !important;
+        font-size: 20px !important;
+    }
+
+}
+
+.alert-md .alert-title {
+    font-size: 25px !important;
+}
+
+.alert-md .alert-sub-title {
+    font-size: 18px;
+}
+
+@media (max-width: 2000px) {
+    .titles-splash {
+        bottom: 17%;
+    }
+
+    .main-text-splash {
+        font-size: 8em;
+        margin-bottom: -11px;
+    }
+
+    .subtitle-splash {
+        font-size: 4em;
+    }
+
+    .fecha {
+        font-size: 3em;
+    }
+
+    .ribbon {
+        height: 19em;
+        margin-top: -5.7em;
+        line-height: 135px;
+    }
+
+    .footer-splash {
+        height: 17%;
+    }
+
+    .splashTitle {
+        font-size: 7em;
+        margin: 0px;
+    }
+
+    .clock {
+        font-size: 5em;
+    }
+
+    .clock-titles {
+        font-size: 3.1em;
+    }
+
+    .clock span {
+        margin-right: 20px;
+
+    }
+    .clock-titles span {
+        margin-right: 30px;
+    }
+
+    .clock-splash {
+        padding-top: 5px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .titles-splash {
+        bottom: 16%;
+    }
+
+    .main-text-splash {
+        font-size: 5.2em;
+        margin-bottom: -11px;
+    }
+
+    .subtitle-splash {
+        font-size: 2.7em;
+    }
+
+    .fecha {
+        font-size: 1.8em;
+    }
+
+    .ribbon {
+        height: 12em;
+        margin-top: -4.7em;
+        line-height: 95px;
+    }
+
+    .footer-splash {
+        height: 17%;
+    }
+
+    .splashTitle {
+        font-size: 4.5em;
+        margin: 0px;
+    }
+
+    .clock {
+        font-size: 3em;
+    }
+
+    .clock-titles {
+        font-size: 2.3em;
+    }
+
+    .clock span {
+        margin-right: 20px;
+
+    }
+    .clock-titles span {
+        margin-right: 20px;
+    }
+
+    .clock-splash {
+        padding-top: 5px;
+    }
+}
+
+@media (max-width: 767px) {
+    .titles-splash {
+        bottom: 15%;
+    }
+
+    .main-text-splash {
+        font-size: 3.2em;
+        margin-bottom: -11px;
+    }
+
+    .subtitle-splash {
+        font-size: 1.7em;
+    }
+
+    .fecha {
+        font-size: 1.1em;
+    }
+
+    .ribbon {
+        height: 7.5em;
+        margin-top: -2.5em;
+        line-height: 55px;
+    }
+
+    .footer-splash {
+        height: 17%;
+    }
+
+    .splashTitle {
+        font-size: 2.7em;
+        margin: 0px;
+    }
+
+    .clock {
+        font-size: 2em;
+    }
+
+    .clock-titles {
+        font-size: 1.4em;
+    }
+
+    .clock span {
+        margin-right: 10px;
+
+    }
+    .clock-titles span {
+        margin-right: 11px;
+    }
+
+    .clock-splash {
+        padding-top: 5px;
+    }
+}
+
+@media (max-width: 582px) {
+    .main-text-splash {
+        font-size: 3.1em;
+    }
+
+    .subtitle-splash {
+        font-size: 1.7em;
+    }
+
+    .fecha {
+        font-size: 1.1em;
+    }
+
+    .ribbon {
+        height: 7em;
+        margin-top: -2em;
+        line-height: 50px;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .main-text-splash {
+        font-size: 2.9em;
+        margin-bottom: -12px;
+    }
+
+    .subtitle-splash {
+        font-size: 1.5em;
+    }
+
+    .fecha {
+        font-size: 1em;
+    }
+}

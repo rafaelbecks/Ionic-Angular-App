@@ -1,0 +1,158 @@
+
+.card-background-page {
+
+  ion-card {
+    position: relative;
+    text-align: left;
+    width: 100%;
+    margin:0;
+    // height: 30vh;
+    border-radius: 0px;
+  }
+
+  .height-card {
+    height: 33.33%;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    margin-left:5%;
+    font-size: 2.4em;
+    width: 100%;
+    font-family: 'Satisfy';
+    color: #fff;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+
+  .bg
+  {
+    background-position : center !important;
+    background-size : cover !important;
+  }
+
+  .bg1
+  {
+    background : url('../assets/imgs/bienvenida.jpg')
+  }
+
+  .bg2
+  {
+    background : url('../assets/imgs/menu1.jpg')
+  }
+
+  .bg3
+  {
+    background : url('../assets/imgs/photo.jpg')
+  }
+
+}
+
+
+.clock-button
+{
+    font-size: 2.1em;
+    position: absolute;
+    bottom: 4vw;
+    color: #fff;
+    right: 5vw
+    }
+
+.card-background-page .card-title {
+  font-size: 7em;
+}
+
+.toolbar-md {
+  min-height: 150px;
+}
+
+.toolbar-title {
+  font-size: 5em;
+}
+
+.bar-button-md[icon-only] ion-icon {
+  font-size: 6.8em;
+}
+
+.icon-margen-right {
+  margin-right: 20px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: #eee;
+  padding: 12px 0px;
+  font-size: 16px;
+}
+
+@media (max-width: 2000px) {
+  .card-background-page .card-title {
+    font-size: 4em;
+  }
+
+  .toolbar-md {
+    min-height: 80px;
+  }
+
+  .toolbar-title {
+    font-size: 3em;
+  }
+
+  .bar-button-md[icon-only] ion-icon {
+    font-size: 3.8em;
+  }
+}
+
+@media (max-width: 1500px) {
+  .card-background-page .card-title {
+    font-size: 4em;
+  }
+
+  .toolbar-md {
+    min-height: 70px;
+  }
+
+  .toolbar-title {
+    font-size: 3em;
+  }
+
+  .bar-button-md[icon-only] ion-icon {
+    font-size: 3.8em;
+  }
+}
+
+@media (max-width: 767px) {
+  .card-background-page .card-title {
+    font-size: 2.4em;
+  }
+
+  .toolbar-md {
+    min-height: 50px;
+  }
+
+  .toolbar-title {
+    font-size: 1.9em;
+  }
+
+  .bar-button-md[icon-only] ion-icon {
+    font-size: 1.8em;
+  }
+
+  .icon-margen-right {
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 582px) {
+  
+}
+
+@media (max-width: 320px) {
+  
+}

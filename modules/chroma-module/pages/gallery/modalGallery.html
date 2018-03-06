@@ -1,0 +1,32 @@
+<ion-content (click)="tap()">
+    <ion-header class="headerGallery">
+        <ion-grid [style.background]="globals.remoteJson.colorPrimario">
+            <ion-row>
+                <ion-col col-12 style="padding: 0px;">
+                    <ion-buttons left>
+                        <button icon-only color="light" (click)="back()" class="icon-margen">
+                            <ion-icon [style.transform]="'rotate('+pictureRotate+'deg)'" class="back-button-icon-md" name="arrow-back"></ion-icon>
+                        </button>
+                    </ion-buttons>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-header>
+
+    <div class="content-fondo-modal">
+        <ion-slides initialSlide="{{posicion}}" effect="slide">
+
+            <div *ngFor="let file of album" >
+                <ion-slide >
+                    <div class="content-modalGallery">
+                        <img [src]="file.src" [class.landscapePicture]="pictureRotate!=0">
+                    </div>
+                    <button ion-fab class="btnShare" (click)="share(file.shareURL);" [style.background]="globals.remoteJson.colorPrimario">
+                        <ion-icon name="share"></ion-icon>
+                    </button>
+                </ion-slide>
+            </div>
+            
+        </ion-slides>
+    </div>
+</ion-content >

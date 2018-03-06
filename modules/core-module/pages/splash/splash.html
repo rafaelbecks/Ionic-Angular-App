@@ -1,0 +1,58 @@
+<ion-content navPush="menu">
+
+    <div class="header-splash">
+        <div [style.background]="'url(assets/imgs/splash.jpg)'" class="splashImage"></div>
+    </div>
+
+    <div class="titles-splash">
+        <table>
+            <tr>
+                <td>
+                    <h1 class="script text-plash main-text-splash">{{globals.remoteJson.titulo}}</h1>
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <p class="script subtitle-splash text-plash">{{globals.localMessageJson.wedding.invitation}}</p>
+                </td>
+            </tr>
+            <tr>
+                <div class="ribbon" [style.background]="'url(assets/imgs/ribbon-lime.svg)'">
+                    <p class="fecha" [style.color]="globals.remoteJson.colorPrimario">{{globals.remoteJson.fecha_texto}}</p>
+                </div>   
+            </tr>
+        </table>
+        
+        <br>
+       
+              
+    </div>
+
+    <div class="footer-splash">
+        <div class="clock-splash">
+            <h1 class="script splashTitle" [style.color]="globals.remoteJson.colorPrimario">{{globals.localMessageJson.wedding.ourWedding}}</h1>
+    
+            <div class="clock" *ngIf="dateTime.seconds>=0">
+                <span >{{ dateTime.days }}</span>
+                <span>{{ dateTime.hours }}</span>
+                <span>{{ dateTime.minutes }}</span>
+                <span>{{ dateTime.seconds }}</span>
+            </div>
+
+            <div class="clock"  *ngIf="dateTime.seconds<0">
+                
+                <!-- caso wedding day -->
+                <span class="script" *ngIf="!globals.localMessageJson.wedding.finished && isWeddingDay">{{globals.localMessageJson.wedding.today}}</span>
+                <!-- caso shutdown app -->
+                <span class="script" *ngIf="!isWeddingDay">{{globals.localMessageJson.wedding.thankyou}}</span>
+            </div>
+
+            <div class="clock-titles" *ngIf="dateTime.seconds>=0">
+                <span class="script">Días</span>
+                <span class="script">Hrs</span>
+                <span class="script">Mins</span>
+                <span class="script">Segs</span>
+            </div>
+        </div>
+    </div>    
+</ion-content>

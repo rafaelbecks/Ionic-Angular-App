@@ -1,0 +1,41 @@
+<!-- <ion-header>
+    <ion-navbar hideBackButton color="brown">
+        <ion-buttons left>
+            <button ion-button (click)="back()">
+                <ion-icon class="back-button-icon-md" name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Galería</ion-title>
+    </ion-navbar>
+</ion-header> -->
+
+<ion-header>
+    <ion-grid [style.background]="globals.remoteJson.colorPrimario">
+        <ion-row>
+            <ion-col col-2 style="padding: 0px;">
+                <ion-buttons left>
+                    <button icon-only color="light" (click)="back()" class="icon-margen">
+                        <ion-icon class="back-button-icon-md" name="arrow-back"></ion-icon>
+                    </button>
+                 </ion-buttons>
+            </ion-col>
+            <ion-col col-10 style="padding: 3px 0px 0px;">
+                <ion-title>Galería</ion-title>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+
+<ion-content>
+    <div class="content-fondo">
+        <div class="galleryFondo">
+            <ion-grid>
+                <ion-row>
+                    <ion-col *ngFor="let file of album" col-4 (click)="openGallery(file.id);" class="selectImage">
+                        <div class="galleryPhotos" [style.background]="'url('+ file.src +')'"></div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+</ion-content>

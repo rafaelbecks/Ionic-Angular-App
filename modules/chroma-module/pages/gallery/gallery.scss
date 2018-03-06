@@ -1,0 +1,107 @@
+page-gallery {
+
+}
+
+.content-fondo {
+    background: #131211;
+    width: 100%;
+    height: 100%;
+}
+
+.content-fondo-modal {
+    background: #000;
+    width: 100%;
+    height: 100%;
+}
+
+.galleryFondo {
+    background: #131211;
+    width: 100%;
+}
+
+.galleryPhotos {
+    background-size: cover !important;
+    width: 100%;
+    height: 125px;
+    position: relative;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    z-index: 2;
+
+}
+
+.content-modalGallery {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.modalGalleryPhotos {
+    // width: 100%;
+    // height: 100vh;
+    // position: absolute;
+    // background-size: cover !important;
+    // background-repeat: no-repeat !important;
+    // background-position: center !important;
+}
+
+.icon-margen {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: #eee;
+    padding: 12px 0px;
+    font-size: 16px;
+}
+
+.btnShare {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.selectImage:hover
+{
+    filter: drop-shadow(1px 3px 12px rgb(255,255,255));
+}
+
+.headerGallery {
+    position: fixed;
+    top: 0px;
+    // opacity: .5;
+}
+
+
+@media (max-width: 2000px) {
+
+}
+
+@media (max-width: 1500px) {
+    .galleryPhotos {
+        height: 300px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .galleryPhotos {
+        height: 240px;
+    }
+}
+
+@media (max-width: 767px) {
+    .galleryPhotos {
+        height: 150px;
+    }
+}
+
+@media (max-width: 582px) {
+    .galleryPhotos {
+        height: 110px;
+    }
+}
+
+@media (max-width: 320px) {
+    .galleryPhotos {
+        height: 90px;
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "titulo"    : "La Gran Boda",
+    "novios"    : "José Julián y Loiry",
+    "fecha" : "2017-12-26 13:30:00",
+    "lugar" : "Talavera de la Reina",
+    "fecha_texto" : "17 de Septiembre de 2017",
+    "iniciales" : "jjl",
+    "hashtags" : ["jjyloiry","labodadelaño","superboda","fiestuki"],
+    "items" : ["Bienvenida", "El Menú", "Photo-COOL"],
+    "shutdown" : 48,
+    "delay":3000,
+    "arCollection":"",
+    "arMobileDirectory":"",
+    "imagesAR":[],
+    "videosAR":[],
+    "minis":[],
+    "share":"",
+    "urlBase" : "http://josejulianyloiry.com/",
+    "colorPrimario":"#413a38",
+    "colorSecundario":"#413a38"
+}

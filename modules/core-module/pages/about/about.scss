@@ -1,0 +1,109 @@
+page-about {
+
+    .grid
+    {
+        background-color: #413a38;
+    }
+
+    .ion-scroll, .scroll-content
+    {
+        padding: 0 !important;
+    }
+
+    .app-about
+    {
+        background: url('../assets/imgs/modal-back-escenarios.jpg');
+        background-position: center;
+        background-size: cover;
+        color:#fff !important;
+        padding: 12px;
+    }
+
+    .team-about
+    {
+        padding: 15px;
+    }
+
+    .powered
+    {
+        margin-bottom: 12px;
+        margin-top : 12px;
+    }
+
+    .powered img
+    {
+        width:65%;
+    }
+
+    .powered span
+    {
+        font-size: 14px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .app-about, .team-about
+    {
+        font-family: 'Montserrat';
+        text-align: center;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 22px
+    }
+
+    .app-about img
+    {
+        width: 70%;
+    }
+
+    .techie
+    {
+        width: 44%;
+        margin-top: 23px;
+        position: relative;
+        -webkit-animation:techiemove 3s infinite;
+        -moz-animation:techiemove 3s infinite;
+        animation:techiemove 3s infinite;
+    }
+
+    @keyframes techiemove {
+        0% { left: 0vw; }
+        15% { left: 20vw; }
+        30% { left: 40vw; }
+        45% { left: 50vw; }
+        60% { left: 50vw; }
+        75% { left: 20vw; }
+        100% { left: 0vw; }
+    }
+    
+    @-moz-keyframes techiemove {
+        0% { left: 0vw; }
+        15% { left: 20vw; }
+        30% { left: 40vw; }
+        45% { left: 50vw; }
+        60% { left: 50vw; }
+        75% { left: 20vw; }
+        100% { left: 0vw; }
+    }
+    
+    @-webkit-keyframes techiemove {
+        0% { left: 0vw; }
+        15% { left: 20vw; }
+        30% { left: 40vw; }
+        45% { left: 50vw; }
+        60% { left: 50vw; }
+        75% { left: 20vw; }
+        100% { left: 0vw; }
+    }
+    
+    @-o-keyframes techiemove {
+        0% { left: 0vw; }
+        25% { left: 20vw; }
+        50% { left: 50vw; }
+        75% { left: 80vw; }
+        100% { left: 50vw; }
+        100% { left: 20vw; }
+        100% { left: 0vw; }
+    }
+
+}

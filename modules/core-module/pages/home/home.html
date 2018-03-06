@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-grid [style.background]="globals.remoteJson.colorPrimario">
+        <ion-icon menuToggle class="menu-icon" md="ios-menu-outline" ios="ios-menu-outline"></ion-icon>
+        <ion-row>
+            <ion-col col-12 style="padding: 0px; text-align:center;">
+                <img src="assets/imgs/tb-white.png" item-start class="icon-logo">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+
+<ion-menu side="left" [content]="mycontent" id="tbmenu" persistent="true">
+        <ion-content>
+            <ion-list>
+            <ion-item menuClose (click)="goSplash()">Ver bienvenida</ion-item>
+            <ion-item menuClose><a class="linkNormal" href="{{weddingURL}}" target="blank">Visitar web de los novios</a></ion-item>
+            <ion-item menuClose (click)="goAbout()">Sobre los desarrolladores</ion-item>
+        </ion-list>
+        </ion-content>
+    </ion-menu>
+
+<ion-content #mycontent class="card-background-page">
+
+  <ion-card class="bg bg1 height-card" (click)="initView('bienvenida')">
+    <div class="card-title">{{globals.remoteJson.items[0]}}</div>
+  </ion-card>
+
+  <ion-card class="bg bg2 height-card" (click)="initView('menu')">
+    <div class="card-title">{{globals.remoteJson.items[1]}}</div>
+  </ion-card>
+
+  <ion-card class="bg bg3 height-card" navPush="chroma">
+    <div class="card-title">{{globals.remoteJson.items[2]}}</div>
+  </ion-card>
+
+</ion-content>

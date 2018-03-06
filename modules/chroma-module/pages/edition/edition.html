@@ -1,0 +1,153 @@
+<ion-content fullscreen class="dontScroll"> 
+
+    <div class="header-ig" [hidden]="!isFrameActive">
+      <h3>ImpactoGram</h3>
+    </div>
+    
+    <div class="locationDiv" [hidden]="!isFrameActive">
+      <img src="assets/imgs/icon.png">
+      <span>{{globals.remoteJson.titulo}}</span>
+      <div class="location">
+        <span><ion-icon md="ios-locate-outline" ios="ios-locate-outline"></ion-icon>{{globals.remoteJson.lugar}}</span>    
+      </div>
+      <span class="date">{{globals.remoteJson.fecha_texto}}</span>
+    </div>
+
+    <figure class="mainImage" [style.filter]="getFilters()" id="mainImageFigure" [ngClass]="filtro" [class.whiteBackground] = "isFrameActive">
+        <div [hidden] = "!showTrash" class="headerDelete" [class.headerDeleteSmaller] = "isSmallerThanScreen" id="headerDelete" (tap)="deleteSticker(null)" [class.trashColor] = "onTrashZone">
+          <div class="centerTitle">
+              <ion-icon ios="ios-trash-outline" md="ios-trash-outline" [style.transform]="'rotate('+iconOrientation+'deg)'" class="animationOrientation"></ion-icon>
+          </div>
+        </div>
+
+        <img *ngFor="let sticker of attStickers; let index = index" [src]="'assets/imgs/' + sticker.src" 
+        class="addStickerImg" 
+        id="sticker{{index}}" 
+        [style.transform]="'rotate('+sticker.rotation+'deg)'"
+         absolute-drag 
+        [style.width]="sticker.size+'px'"
+        (tap)="addSizeSticker($event, index)"
+        (dblTap)="deleteSticker(index)"
+        (pan)="addSizeSticker($event, index)"
+        (rotateend) = "rotateEnd()" 
+        (rotate)="onRotation($event,index)" 
+        (rotatestart) = "rotationStart($event,index)"
+        (panstart) = "trashShow()"
+        (panend) = "deleteIfTrash(index)">
+        <img src="{{srcPhoto}}" class="editionImage" id="capturedImage" [class.isImpactoGramActive]="isFrameActive" />
+
+        <!-- <img src="assets/imgs/portrait-test.jpg" [ngClass]="filtro" /> -->
+    </figure>
+    <div class="toolbar">
+        
+    </div>
+
+    <ion-icon [style.transform]="'rotate('+iconOrientation+'deg)'" class="animationOrientation toggleViewWithoutBar" ios="ios-eye" md="ios-eye" [hidden]="!isFrameActive || hideEye" (click)="toggleSavingImage()"></ion-icon>
+
+    <div class="footerDiv" [hidden]="!isFrameActive">
+      <ion-icon md="ios-heart" ios="ios-heart" class="heartlike"></ion-icon>
+      <span class="likes">1,000,000 likes</span>
+      <p class="textpub">Fueron felices y comieron perdices
+      <img class="emoji" src="assets/imgs/emoji/1f935-1f3fb.png">
+      <img class="emoji" src="assets/imgs/emoji/1f470-1f3fc.png">
+      <img class="emoji" src="assets/imgs/emoji/1f48d.png">
+      <img class="emoji" src="assets/imgs/emoji/2665.png">
+  
+      <span class="hashtags">
+      <span *ngFor="let ht of globals.remoteJson.hashtags">#{{ht}} </span>
+    </span>
+  
+      </p>
+      </div>
+
+    <ion-footer class="" [hidden] = "savingImage">
+
+      <div class="zoomSlider blackBackground" [class.topBar] = "isSmallerThanScreen" [hidden]="!rangeBrightness || (rangeSizeSticker || carouselFiltro || rangeContrast || rangeSaturation)">
+          <ion-range max="250" min="50" [(ngModel)]="brightness" class="transparentBackground rangePadding" color="secondary">
+          </ion-range>
+      </div>
+
+      <div class="zoomSlider blackBackground" [class.topBar] = "isSmallerThanScreen" [hidden]="!rangeContrast  || (rangeSizeSticker || carouselFiltro || rangeBrightness || rangeSaturation)">
+          <ion-range max="250" min="50" [(ngModel)]="contrast" class="transparentBackground rangePadding" color="secondary">
+          </ion-range>
+      </div>
+
+      <div class="zoomSlider blackBackground" [class.topBar] = "isSmallerThanScreen" [hidden]="!rangeSaturation || (rangeSizeSticker || carouselFiltro || rangeBrightness || rangeContrast)">
+          <ion-range max="250" min="50" [(ngModel)]="saturation" class="transparentBackground rangePadding" color="secondary">
+          </ion-range>
+      </div>
+
+      <div class="zoomSlider blackBackground" [class.topBar] = "isSmallerThanScreen" [hidden]="!rangeSizeSticker || (carouselFiltro || rangeSaturation || rangeBrightness || rangeContrast)">
+        <ion-icon ios="ios-resize" md="ios-resize" class="resizeIconSticker"></ion-icon>
+        <ion-range max="250" min="50" [(ngModel)]="sizeSticker" (ionChange)="changeStickerSize(sizeSticker)" class="transparentBackground rangePadding stickerSizeRange" color="secondary">
+          </ion-range>
+      </div>
+
+      <div class="filtersBackgrounds blackBackground" [class.topBar] = "isSmallerThanScreen" [hidden]="!carouselFiltro || (rangeSizeSticker || rangeSaturation || rangeBrightness || rangeContrast)">
+        <div class="" [style.width] = "horizontalScrollFilter+'px'">
+          <div *ngFor="let filter of filters" class="backgroundItem" [class.action-filter]="filter.className == filtro">
+            <div [style.transform]="'rotate('+iconOrientation+'deg)'" 
+            class="size-backgroundItem animationOrientation"  
+            [style.background]="'url('+ srcPhoto +')'"  
+            [class.selectedFilter] = "filter.className == filtro" 
+            [ngClass]="filter.className" 
+            (click)="selectFilter(filter.className);">
+            <!-- <div [style.transform]="'rotate('+iconOrientation+'deg)'" class="size-backgroundItem animationOrientation"  [style.background]="'url(assets/imgs/portrait-test.jpg)'"  [ngClass]="filter.className" (click)="selectFilter(filter.className);filtro=filter.className" > -->
+              <div class="title-backgroundItem" >
+                {{ filter.name }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-sticker blackBackground" *ngIf="modalSticker">
+        <div class="seccion-stiker">
+          <div class="scroll-x" [style.width] = "(stickersPacks.length*61)+'px'">
+            <div *ngFor="let pack of stickersPacks" class="img-sticker action-sticker" (click)="selectPackSticker(pack)" [class.action-addSticker]="pack == currentPack">
+              <img src="assets/imgs/stickers/{{pack}}/main_icon_mdpi.png" [style.transform]="'rotate('+iconOrientation+'deg)'" class="animationOrientation slow slideInRight" [class.action-addSticker]="pack == currentPack">
+            </div>
+          </div>
+        </div>
+
+        <div class="content-sticker">
+          <ion-grid>
+              <ion-row>
+                  <ion-col *ngFor="let enlace of typePack" col-3 class="action-sticker animated fadeIn">
+                      <img [src]="'assets/imgs/' + enlace" (click)="selectSticker(enlace);" [style.transform]="'rotate('+iconOrientation+'deg)'" class="animationOrientation">
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+        </div>
+        
+      </div>   
+
+      <div class="effects blackBackground" [hidden]="!panelEffects && !isSmallerThanScreen" [class.blackest]="isFrameActive">
+        <!-- brillo, contraste, saturación, stickers filtros -->
+
+        <ion-icon class="animationOrientation" [class.iconFrame] = "isSmallerThanScreen" [style.transform]="'rotate('+iconOrientation+'deg)'" ios="ios-sunny-outline" md="ios-sunny-outline" (click)="effects('brillo');"></ion-icon>
+        <ion-icon class="animationOrientation" [class.iconFrame] = "isSmallerThanScreen" [style.transform]="'rotate('+iconOrientation+'deg)'" ios="ios-contrast-outline" md="ios-contrast-outline" (click)="effects('contraste')"></ion-icon>
+        <ion-icon class="animationOrientation" [class.iconFrame] = "isSmallerThanScreen" [style.transform]="'rotate('+iconOrientation+'deg)'" ios="ios-color-palette-outline" md="ios-color-filter-outline" (click)="effects('saturacion')"></ion-icon>
+        <ion-icon class="animationOrientation" [class.iconFrame] = "isSmallerThanScreen" [style.transform]="'rotate('+iconOrientation+'deg)'" ios="ios-color-palette-outline" md="ios-color-palette-outline" (click)="effects('filtro')"></ion-icon>
+        <ion-icon class="animationOrientation" [class.iconFrame] = "isSmallerThanScreen" [style.transform]="'rotate('+iconOrientation+'deg)'" ios="ios-happy-outline" md="ios-happy-outline" (click)="effects('sticker')"></ion-icon>        
+        <ion-icon class="animationOrientation" [class.iconFrame] = "isSmallerThanScreen" [hidden] ="!isSmallerThanScreen || globals.lastOrientation!=0" [style.transform]="'rotate('+iconOrientation+'deg)'" ios="ios-easel-outline" md="ios-easel-outline" (click)="toggleFrame()"></ion-icon>        
+
+      </div>
+
+      <ion-toolbar class="toolbarEdition blackBackground" id="toolbarEdition">
+
+        <ion-icon [style.transform]="'rotate('+iconOrientation+'deg)'" class="animationOrientation" ios="ios-arrow-round-back" md="ios-arrow-round-back" [hidden]="!panelEffects" (click)="goBack()"></ion-icon>
+        <ion-icon [style.transform]="'rotate('+iconOrientation+'deg)'" class="animationOrientation" ios="ios-close-outline" md="ios-close-outline" [hidden]="panelEffects" (click)="deshacer();"></ion-icon>
+
+        <div class="toolbarTitle">
+            <span [hidden]="iconOrientation == 90 || iconOrientation == -90">{{currentControl}}</span>
+        </div>
+
+        <ion-icon [style.transform]="'rotate('+iconOrientation+'deg)'" class="animationOrientation" ios="ios-checkmark-circle" md="ios-checkmark-circle" style="color: #318c31;" [hidden]="!panelEffects" (click)="save();"></ion-icon>
+        <ion-icon [style.transform]="'rotate('+iconOrientation+'deg)'" class="animationOrientation" ios="ios-checkmark-outline" md="ios-checkmark-outline" [hidden]="panelEffects" (click)="saveEffect();"></ion-icon>
+    
+      </ion-toolbar>
+    </ion-footer>
+
+
+</ion-content>

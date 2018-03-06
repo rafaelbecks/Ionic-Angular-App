@@ -1,0 +1,461 @@
+page-chroma-key {
+
+    ion-spinner
+    {
+        stroke:#ffffff;
+        fill: #fff;
+        z-index: 100;
+    }
+
+    .obscuredScreen
+    {
+        background: #000 !important
+    }
+
+    .cameraViewport
+    {
+        background: transparent;
+        background-position: center;
+        background-size: cover;  
+    }
+
+    .toolbarZone
+    {
+        height: auto;
+        width: 100vw;
+    }
+
+    .circleShot
+    {
+        width: 230px;
+        height: 230px;
+        background: rgba(0,0,0,.7);
+        border-radius: 100%;
+        display: inline-block;
+    }
+
+    .innerCircle
+    {
+        width: 150px;
+        height: 150px;
+        background: #99e265;
+        display: inline-block;
+        border-radius: 100%;
+        position: relative;
+        top: 40px;
+    }
+
+    .cameraIcons
+    {
+        width: 200px;
+    }
+
+    .circlePhoto
+    {
+        /* padding-top: 13%; */
+        width: 195px;
+        height: 195px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 100%;
+        display: flex;
+        background-position: center !important;
+        background-size: cover !important;
+        position: absolute;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+
+    .circlePhoto ion-icon
+    {
+        color:#fff;
+        font-size: 90px;
+    }
+
+    ion-range ion-label
+    {
+        color:#fff !important;
+    }
+
+    ion-grid
+    {
+        padding: 0 !important;
+    }
+
+    .positionIcons
+    {
+        position: relative;
+        top: 8px
+    }
+
+    .positionIcons2
+    {
+        position: relative;
+        padding-top: 8px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .headerToolbar ion-icon
+    {
+        font-size: 110px;
+        color: #fff
+    }
+
+    .filterZone
+    {
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
+        height: auto;
+        padding: 10px 0px;
+    }
+
+    .segment-button.segment-activated
+    {
+        border-color: #99e265 !important;
+        color: #99e265;
+    }
+
+    .segment-md .segment-button
+    {
+        color: #99e265;        
+    }
+
+    .chroma
+    {
+        height: 13vh;
+    }
+
+    .switchZone
+    {
+        padding: 13px 9px;
+        text-align: center;
+        color: #fff;
+        display: inline-block
+    }
+
+    .chromaBackgrounds
+    {
+        display: inline-block;
+        position: relative;
+        top: 8px;
+        max-width: 70%;
+        overflow-x: auto
+    }
+
+    .filtersBackgrounds
+    {
+        display: inline-block;
+        position: relative;
+        top: 14%;
+        max-width: 100%;
+        margin: 2% 4%;
+        overflow-x: auto;
+
+    }
+
+    .backgroundItem
+    {
+        width: 70px;
+        height: 70px;
+        display: inline-block;
+    }
+
+    .horizontalScroll
+    {
+        width: 210vw;
+    }
+
+    .beach
+    {
+        background: url('../assets/imgs/chroma/thumbs/th-beach.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    .bridge
+    {
+        background: url('../assets/imgs/chroma/thumbs/th-bridge.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    .england
+    {
+        background: url('../assets/imgs/chroma/thumbs/th-england.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    .paradise
+    {
+        background: url('../assets/imgs/chroma/thumbs/th-paradise.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .paradise2
+    {
+        background: url('../assets/imgs/chroma/thumbs/th-paradise2.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+ 
+    .snow
+    {
+        background: url('../assets/imgs/chroma/thumbs/th-snow.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .spacestation
+    {
+        background: url('../assets/imgs/chroma/thumbs/th-spacestation.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .sunny
+    {
+        background: url('../assets/imgs/chroma/thumbs/th-sunny.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .filterColorBackground
+    {
+        background: url('../assets/imgs/chroma/thumbs/th-color.jpg');
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        color:#fff;
+        text-transform: capitalize;
+        font-size: 12px;
+    }
+
+    .filterColorBackground span{
+        position: relative;
+        top: 32%;
+        word-wrap:initial;
+    }
+
+    .tabContent
+    {
+        margin: 14px 0px;
+    }
+
+    .labelSwitch
+    {
+        font-size: 12px;
+    }
+
+    .transparentBackground
+    {
+        background: transparent;
+    }
+
+
+    .rangePadding
+    {
+        padding: 8px 20px;
+        z-index: 100;
+        background: rgba(46, 46, 46, 0.5);
+    }
+
+    .autoFlash
+    {
+        color: #fff !important;
+        font-size: 11px !important;
+    }
+
+    .tabTitle
+    {
+        margin: 0 !important;
+    }
+
+    .testValues
+    {
+        background: #fff;
+    }
+
+    #video
+    {
+        width: 100vw;
+        display: none;
+    }
+
+    #seriously
+    {
+        position: absolute;
+        top: 0;
+    }
+
+
+    .zoomSlider
+    {
+        z-index: 100;
+    }
+
+        #draggable
+        {
+            width: 100vw;
+            position: absolute;
+            top: 10%;
+            height: 80vh;
+        }
+
+}
+
+@media (max-width: 2000px) {
+    page-chroma-key {
+        .cameraIcons {
+            width: 90px;
+        }
+
+        .circleShot {
+            width: 100px;
+            height: 100px;
+        }
+
+        .innerCircle {
+            width: 65px;
+            height: 65px;
+            top: 18px;
+        }
+
+        .circlePhoto {
+            width: 87px;
+            height: 87px;
+        }
+
+        .headerToolbar ion-icon {
+            font-size: 60px;
+        }
+
+        .circlePhoto ion-icon {
+            font-size: 40px;
+        }
+    }
+}
+
+@media (max-width: 1500px) {
+    page-chroma-key {
+        .cameraIcons {
+            width: 80px;
+        }
+
+        .circleShot {
+            width: 90px;
+            height: 90px;
+        }
+
+        .innerCircle {
+            width: 60px;
+            height: 60px;
+            top: 15px;
+        }
+
+        .circlePhoto {
+            width: 77px;
+            height: 77px;
+        }
+
+        .headerToolbar ion-icon {
+            font-size: 50px;
+        }
+
+        .circlePhoto ion-icon {
+            font-size: 42px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    page-chroma-key {
+        .cameraIcons {
+            width: 70px;
+        }
+
+        .circleShot {
+            width: 80px;
+            height: 80px;
+        }
+
+        .innerCircle {
+            width: 50px;
+            height: 50px;
+            top: 15px;
+        }
+
+        .circlePhoto {
+            width: 67px;
+            height: 67px;
+        }
+
+        .headerToolbar ion-icon {
+            font-size: 36px;
+        }
+
+        .circlePhoto ion-icon {
+            font-size: 32px;
+        }
+
+        .filterZone {
+            padding: 0px 0px;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    page-chroma-key {
+        .cameraIcons {
+            width: 60px;
+        }
+
+        .circleShot {
+            width: 70px;
+            height: 70px;
+        }
+
+        .innerCircle {
+            width: 45px;
+            height: 45px;
+            top: 13px;
+        }
+
+        .circlePhoto {
+            width: 58px;
+            height: 58px;
+        }
+    }
+}
+
+.blackwhite{
+    -webkit-filter: grayscale(100%) !important; 
+    filter: grayscale(100%) !important;    
+}
+
+.selectedBackgroundChroma
+{
+border: 3px solid #fff;
+}
+
+.backgrounTextChroma
+{
+    color: #fff;
+    font-size: 1.5em;
+    font-family: 'Montserrat';
+    font-weight: 300;
+    text-align: center;
+    top: 35vh;
+    position: relative;
+    z-index: -1;
+}
+
+.hiddenText
+{
+    display: none !important;
+}
+
+
+

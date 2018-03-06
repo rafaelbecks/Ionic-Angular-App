@@ -1,0 +1,159 @@
+<ion-header>
+
+<div class="headerToolbar blackBackground" [hidden]="takingPhoto">
+    
+    <ion-grid class="centered">
+        
+        <ion-row>
+
+            <ion-col col-4 [hidden]="!liveMode" (click)="toggleZoom();"><ion-icon class="animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'" md="ios-search-outline" ios="ios-search-outline"></ion-icon></ion-col>
+
+            <ion-col col-3 [hidden]="liveMode" (click)="toggleZoom();"><ion-icon class="animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'" md="ios-search-outline" ios="ios-search-outline"></ion-icon></ion-col>
+            
+            <ion-col [hidden]="liveMode" col-3 (click)="switchCamera();"><ion-icon class="animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'" md="ios-reverse-camera-outline" ios="ios-reverse-camera-outline"></ion-icon></ion-col>
+
+            <ion-col col-3 (click)="changeFlash();" [hidden]="liveMode">
+                <ion-icon [hidden]="isFlashChanging" class="animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'" md="{{iconsFlash[flashModes[flashMode]]}}" ios="{{iconsFlash[flashModes[flashMode]]}}"></ion-icon><span class="autoFlash" [hidden]="flashModes[flashMode]!='auto'">auto</span>
+                <ion-spinner [hidden]="!isFlashChanging" class="animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'" ></ion-spinner>
+            </ion-col>
+            
+            <ion-col col-4 [hidden]="!liveMode" (click)="switchWebCam()">
+              <ion-icon id="testIcon" class="animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'" md="ios-reverse-camera-outline" ios="ios-reverse-camera-outline"></ion-icon>
+            </ion-col>
+
+            <ion-col col-3 [hidden]="liveMode" (click)="toggleFullScreenCamera()">
+                <ion-icon md="ios-expand" ios="ios-expand" [hidden]="cameraPreviewOpts.y == 0"></ion-icon>
+                <ion-icon md="ios-contract" ios="ios-contract" [hidden]="cameraPreviewOpts.y != 0"></ion-icon>
+            </ion-col>
+
+            <ion-col col-4 (click)="activateChromaControls();" [hidden]="!liveMode">
+                <ion-icon [hidden]="showChromaControls" class="animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'" md="ios-settings-outline" ios="ios-settings-outline"></ion-icon>
+                <ion-icon [hidden]="!showChromaControls" class="animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'" md="ios-settings" ios="ios-settings"></ion-icon>
+            </ion-col>
+
+
+        </ion-row>
+
+    </ion-grid>
+
+</div>
+
+</ion-header>
+
+
+<ion-content class="cameraViewport" [class.obscuredScreen] = "isLoadingShow">
+
+<div class="zoomSlider blackBackground" [hidden]="!showZoomSlider">
+    <ion-range (ionChange)="setZoom();" [(ngModel)]="zoomValue"  max="{{maxZoom}}" min="{{minZoom}}" class="transparentBackground rangePadding" color="secondary"></ion-range>
+</div>
+
+
+<video id="video" autoplay="true"></video> 
+
+<canvas id="seriously" [hidden]="!liveMode" (pan)="getCoordinates($event);"></canvas>
+
+<div class="animationOrientation backgrounTextChroma" [style.transform]="'rotate('+iconOrientation+'deg)'" [hidden]="!liveMode" [class.hiddenText] = "currentBackground != ''">{{globals.localMessageJson.chroma.camara.backgroundSelect}}</div>
+
+ <div id="draggable" absolute-drag-chroma></div>
+
+   <img src="assets/imgs/chroma/live/{{currentBackground}}.jpg" [style.width]="imageSize+'vw'" [style.top] = "imageTop+'vh'" [style.left] = "imageLeft+'vw'" id="background" [style.transform]="'rotate('+imageRotate+'deg)'" class="chromaBackground animationOrientation" [hidden]="currentBackground==undefined || !liveMode" />   
+
+<div class="cameraConfigs" [hidden]="takingPhoto">
+    <div class="filterZone blackBackground">
+        <div class="chromaControls" [hidden]="!showChromaControls">
+
+        <ion-segment [(ngModel)]="chromaTabs">
+            <ion-segment-button value="size">
+              <p  class="tabTitle animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'"><ion-icon md="ios-resize-outline" ios="ios-resize-outline"></ion-icon>  </p>
+            </ion-segment-button>
+            <ion-segment-button value="rotate">
+              <p  class="tabTitle animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'"><ion-icon md="ios-refresh-outline" ios="ios-refresh-outline"></ion-icon>  </p>
+            </ion-segment-button>
+          </ion-segment>
+
+
+      <div class="zoomSlider" [ngSwitch]="chromaTabs">
+          <ion-range *ngSwitchCase="'size'" [(ngModel)]="imageSize" max="400" min="150" class="transparentBackground rangePadding" color="secondary">
+          </ion-range>
+          <ion-range *ngSwitchCase="'rotate'" [(ngModel)]="imageRotate" max="180" min="0" class="transparentBackground rangePadding" color="secondary">  
+             <ion-label range-left>-Y</ion-label>
+          </ion-range>
+
+      </div>
+    </div>
+    <div class="tabsEffects" [hidden]="!showFilters">
+        <ion-segment [(ngModel)]="optionsTabs">
+            <ion-segment-button value="colorFilters" [disabled]="liveMode" [hidden] = "colorEffects.length == 0">
+            <p class="tabTitle" *ngIf="iconOrientation == 0">{{globals.localMessageJson.chroma.camara.filtersText}}</p>
+            <p *ngIf="iconOrientation !=0" class="tabTitle animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'"><ion-icon md="ios-color-filter-outline" ios="ios-color-filter-outline"></ion-icon>  </p>
+            </ion-segment-button>
+            <ion-segment-button value="chroma">
+            <p class="tabTitle" *ngIf="iconOrientation == 0">{{globals.localMessageJson.chroma.camara.chromaText}}</p>
+            <p *ngIf="iconOrientation !=0" class="tabTitle animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'"><ion-icon md="ios-color-palette-outline" ios="ios-color-palette-outline"></ion-icon></p>
+            </ion-segment-button>
+          </ion-segment>
+
+
+          <div [ngSwitch]="optionsTabs">
+              <div *ngSwitchCase="'colorFilters'">
+                <div class="tabContent"  *ngIf="colorEffects.length>=0">
+                        <div class="filtersBackgrounds">
+                            <div [style.width] = "horizontalScrollFilter+'px'" >
+                            <div  *ngFor="let filter of colorEffects" [style.transform]="'rotate('+iconOrientation+'deg)'" 
+                                [class.selectedItem] = "filter == currentEffect" 
+                                class="backgroundItem filterColorBackground animationOrientation" (click)="setColorEffect(filter);"><span>{{filter}}</span></div>
+                            </div>
+                        </div>
+                    </div>          
+              </div>
+              <div class="tabContent" *ngSwitchCase="'chroma'">
+                  <div class="switchZone animationOrientation" [style.transform]="'rotate('+iconOrientation+'deg)'">
+                          <ion-toggle (ionChange) = "toggleCamera();" [(ngModel)]="liveMode" color="secondary"></ion-toggle>
+                            <span class="labelSwitch">Live</span>
+                  </div>
+                  <div class="chromaBackgrounds">
+                    <div [style.width] = "horizontalScrollChroma+'px'">
+                      <div *ngFor="let bg of chromaBackgrounds" 
+                      (click)="selectBackground(bg);" 
+                      [style.transform]="'rotate('+iconOrientation+'deg)'" 
+                      [class.selectedBackgroundChroma] = "bg == currentBackground" 
+                      class="backgroundItem {{bg}} animationOrientation"
+                      [class.blackwhite] = "!liveMode"></div>
+                    </div>
+                  </div>
+              </div>          
+          </div>
+        
+    </div>
+
+
+    <div class="toolbarZone">
+        
+    <ion-grid>
+        <ion-row class="centered">
+            <ion-col col-4 (click)="toggleFilters();">
+                <img src="assets/imgs/live-mode.png" [style.transform]="'rotate('+iconOrientation+'deg)'" class="cameraIcons positionIcons animationOrientation">
+            </ion-col>
+            <ion-col col-4 ><div (click)="takePhoto();" class="circleShot"><div class="innerCircle"></div></div></ion-col>
+          
+            <ion-col col-4 (click)="goToGallery()">
+                <div class="positionIcons2">
+                  <div class="circlePhoto">
+                  <ion-icon class="animationOrientation" *ngIf="lastImage == undefined || lastImage == ''" [style.transform]="'rotate('+iconOrientation+'deg)'" name="images"></ion-icon></div>
+                  <div class="circlePhoto animationOrientation" *ngIf="lastImage!='' || lastImage!=undefined" [style.transform]="'rotate('+iconOrientation+'deg)'" [style.background]="getLastImage()"></div>
+                </div>
+                
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    </div>
+    </div>
+
+
+</div>
+
+</ion-content>
+
+
+
